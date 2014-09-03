@@ -1,15 +1,30 @@
-define(['underscore', 'jquery', 'lib/modules/templates', 'lib/modules/initialize'],
-  function(_, $, templates, initialize) {
+define(['lib/modules/templates', 'lib/modules/initialize'],
+  function(templates, initialize) {
 
-  var populate = function(data){
+  var populate = function(data, movie_div){
+
     data.results.forEach(function(movie) {
-      var html = $(templates.templates(1)(movie));
-      $('.main').append(html);
+       if ($.type(movie.poster_path) === 'string')
+      {
+        var html = $(templates.templates(1)(movie));
+        $('.main').append(html);
+      }
     });
   };
 
+
+  var popup  = function(data, movie_div){
+      var html2 = (templates.templates(2)(data));
+      // $(movie_div).prepend(html2);
+
+      // $(movie_div).on('mouseleave',function(){
+      // // $(movie_div).addClass('small-1');
+      // });
+    };
+
   return {
-    populate: populate
+    populate: populate,
+    popup: popup
   };
 
 });

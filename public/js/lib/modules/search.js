@@ -1,5 +1,5 @@
-define(['jquery', 'lib/modules/initialize'],
-function($,initialize){
+define(['lib/modules/initialize'],
+function(initialize){
 
   var reset = function(){
     $('.movie').remove();
